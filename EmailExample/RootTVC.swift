@@ -21,19 +21,20 @@ class RootTVC: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
         //If in Inbox, edit button
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.setEditing(isEditing, animated: true)
         
         //If in Sent, add button
         
         //If in Trash, no button
-       
+       //super.setEditing(editing, animated: animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,7 +71,21 @@ class RootTVC: UITableViewController {
 
         return cell
     }
-    
+/*
+    override func setEditing(_ editing: Bool, animated: Bool) {
+    // Toggles the edit button state
+    super.setEditing(editing, animated: animated)
+    // Toggles the actual editing actions appearing on a table view
+    tableView.setEditing(isEditing, animated: true)
+        
+    if (self.isEditing) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+    } else {
+        // we're not in edit mode
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil )
+
+        }
+*/
 
    /*
     // Override to support conditional editing of the table view.
@@ -84,12 +99,11 @@ class RootTVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-      
-        if editingStyle == .delete {
+            if editingStyle == .delete {
             // Delete the row from the data source
             emails.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+            self.tableView.reloadData()
  
             
             
@@ -98,9 +112,8 @@ class RootTVC: UITableViewController {
             //adding a new email
             let newIndexPath = IndexPath(row: emails.count, section: 0)
             emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-            //update and save the newly added rows
+            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+            // let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(emails, toFile: String!(Email))            //update and save the newly added rows
             
     
         }
@@ -108,12 +121,14 @@ class RootTVC: UITableViewController {
         //else with if editingStyle == .none
         else {
             if editingStyle == .none {
-                tableView.reloadData()
+                self.tableView.reloadData()
                 
             }
+    
     }
     }
-   /*
+    
+  /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         
