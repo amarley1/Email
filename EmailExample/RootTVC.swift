@@ -16,6 +16,9 @@ class RootTVC: UITableViewController {
     
     var emails = [Email]()
     var delegate: CellSelectedDelegate?
+    var dataDictionary: [String:Array<Email>] = [:]
+  
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,22 +75,6 @@ class RootTVC: UITableViewController {
         return cell
     }
 
-    /*
-    override func setEditing(_ editing: Bool, animated: Bool) {
-    // Toggles the edit button state
-    super.setEditing(editing, animated: animated)
-    // Toggles the actual editing actions appearing on a table view
-    tableView.setEditing(isEditing, animated: true)
-        
-    if (self.isEditing) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-    } else {
-        // we're not in edit mode
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil )
-
-        }
-
-*/
  
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -99,6 +86,32 @@ class RootTVC: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        /*
+        switch dataDictionary {
+        case "Inbox" :
+                        // adds edit button
+                        self.navigationItem.rightBarButtonItem = self.editButtonItem
+                        if editingStyle == .delete {
+                        // Delete the row from the data source
+                        emails.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                            tableView.reloadData()}
+        case "Sent" :
+                        //add button
+                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+                        if editingStyle == .insert {
+                        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+                        //adding a new email
+                        let newIndexPath = IndexPath(row: emails.count, section: 0)
+                        emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
+                        self.tableView.insertRows(at: [newIndexPath], with: .automatic)}
+        default:
+            //for trash
+            //editingStyle = .none
+            self.tableView.reloadData()
+        }*/
+
         
             if editingStyle == .delete {
                         // Delete the row from the data source
@@ -142,14 +155,23 @@ class RootTVC: UITableViewController {
     }
    
 */
-    /*
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+        
+        let newdestVC = segue.destination as! MenuTVC
+        newdestVC.emails = dataDictionary[selectedRow]!
+        
+        //1. which button got pressed
+        //2. up-to-date data
+        
+        print("In transfer")
 
+    }
+  */
 }
+

@@ -10,6 +10,7 @@ import UIKit
 
 class MenuTVC: UITableViewController {
     
+    var emails = [Email]()
     var dataDictionary: [String:Array<Email>] = [:]
     var selectedRow = ""
 
@@ -63,7 +64,9 @@ class MenuTVC: UITableViewController {
         switch selectedRow {
         case "Inbox":
             // adds edit button
+            
             self.navigationItem.rightBarButtonItem = self.editButtonItem
+            //editingStyle = .delete
             //removes email after delete selected
             /*emails.remove(at: indexPath.row)
              tableView.deleteRows(at: [indexPath], with: .fade)
@@ -73,18 +76,22 @@ class MenuTVC: UITableViewController {
             //add button
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
             //adds spam email after being clicked
+            //editingStyle = .insert
             /*let newIndexPath = IndexPath(row: emails.count, section: 0)
              emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
              self.tableView.insertRows(at: [newIndexPath], with: .automatic)*/
             
         default:
+            //for trash
+            //editingStyle = .none
             self.tableView.reloadData()
-       }
-            
+        }
+      
         //call segue manually
         performSegue(withIdentifier: "cellSelected", sender: self)
         
- 
+       
+        
     }
  
 
