@@ -22,22 +22,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let splitVC = self.window?.rootViewController as! UISplitViewController
         let navVC = splitVC.viewControllers.first as! UINavigationController
         let menuTVC = navVC.viewControllers[0] as! MenuTVC
+        //let rootTVC = navVC.viewControllers[1] as! RootTVC
+        
         
         let test = Email(sender: "asu@asu.edu", subject: "Spam", contents: "Spam")
-        menuTVC.dataDictionary = ["Inbox":[Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please")], "Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please")], "Trash":[Email(sender: "alert@asu.edu", subject: "Bees", contents: "Hi help me please there are bees")]]
+        menuTVC.dataDictionary = ["Inbox":[Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please")], "Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please"),Email(sender: "test", subject: "test2", contents: "test3")], "Trash":[Email(sender: "alert@asu.edu", subject: "Bees", contents: "Hi help me please there are bees")]]
+
+        /*
+        if menuTVC.dataDictionary = ["Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please")] {
+            
+            emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
+            tableView.insertRows(at: [indexPath], with: .top);
+        }
+        */
         
         /*
         rootTVC.emails.append(Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please"))
         rootTVC.emails.append(Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please"))
         rootTVC.emails.append(Email(sender: "alert@asu.edu", subject: "Bees", contents: "Hi help me please there are bees"))
-        
+
         let detailVC = splitVC.viewControllers.last as! ViewController
         
         rootTVC.delegate = detailVC
- */
+    */
         
         return true
-    }
+     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

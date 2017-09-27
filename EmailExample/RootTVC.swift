@@ -21,10 +21,17 @@ class RootTVC: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //If in Inbox, edit button
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        //If in Sent, add button
+        
+        //If in Trash, no button
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,40 +72,71 @@ class RootTVC: UITableViewController {
     }
     
 
-    /*
+   /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
+   */
     /*
+    if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            // Update an existing meal.
+            meals[selectedIndexPath.row] = meal
+            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+        }
+        else {
+            // Add a new meal.
+            let newIndexPath = IndexPath(row: meals.count, section: 0)
+            
+            meals.append(meal)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }*/
+    
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+    
+            emails.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+           
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            //adding a new email
+            emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
+            tableView.insertRows(at: [indexPath], with: .top);
+            //update and save the newly added rows
+            tableView.reloadData()
+        }
+        
+        //else with if editingStyle == .none
     }
-    */
-
-    /*
+  
+   /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        
+        emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
+        tableView.insertRows(at: [indexPath], with: .top);
+        
     }
-    */
+*/
 
-    /*
+   
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
+              
         return true
     }
-    */
+   
 
     /*
     // MARK: - Navigation
