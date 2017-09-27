@@ -83,34 +83,44 @@ class RootTVC: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+      
         if editingStyle == .delete {
             // Delete the row from the data source
-    
             emails.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
-           
+ 
+            
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             //adding a new email
+            let newIndexPath = IndexPath(row: emails.count, section: 0)
             emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
-            tableView.insertRows(at: [indexPath], with: .top);
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
             //update and save the newly added rows
-            tableView.reloadData()
+            
+    
         }
         
         //else with if editingStyle == .none
+        else {
+            if editingStyle == .none {
+                tableView.reloadData()
+                
+            }
     }
-  
+    }
    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         
-       
+     
     }
 */
-
+/*
    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -119,7 +129,7 @@ class RootTVC: UITableViewController {
         return true
     }
    
-
+*/
     /*
     // MARK: - Navigation
 

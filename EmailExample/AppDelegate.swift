@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let test = Email(sender: "asu@asu.edu", subject: "Spam", contents: "Spam")
         menuTVC.dataDictionary = ["Inbox":[Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please")], "Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please"),Email(sender: "test", subject: "test2", contents: "test3")], "Trash":[Email(sender: "alert@asu.edu", subject: "Bees", contents: "Hi help me please there are bees")]]
 
-        /*
+        
+             /*
         if menuTVC.dataDictionary = ["Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please")] {
             
             emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
