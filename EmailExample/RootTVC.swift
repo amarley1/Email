@@ -29,13 +29,17 @@ class RootTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
         //If in Inbox, edit button
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        tableView.setEditing(isEditing, animated: true)
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //tableView.setEditing(isEditing, animated: true)
         
         //If in Sent, add button
         
         //If in Trash, no button
        //super.setEditing(editing, animated: animated)
+        
+        
+  
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,9 +159,9 @@ class RootTVC: UITableViewController {
     }
    
 */
-/*
-    // MARK: - Navigation
 
+    // MARK: - Navigation
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

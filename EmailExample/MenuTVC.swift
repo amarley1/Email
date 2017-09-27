@@ -61,31 +61,7 @@ class MenuTVC: UITableViewController {
         let keywords = Array(dataDictionary.keys)
         selectedRow = keywords[indexPath.row]
         
-        switch selectedRow {
-        case "Inbox":
-            // adds edit button
-            
-            self.navigationItem.rightBarButtonItem = self.editButtonItem
-            //editingStyle = .delete
-            //removes email after delete selected
-            /*emails.remove(at: indexPath.row)
-             tableView.deleteRows(at: [indexPath], with: .fade)
-             tableView.reloadData()*/
-            
-        case "Sent" :
-            //add button
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-            //adds spam email after being clicked
-            //editingStyle = .insert
-            /*let newIndexPath = IndexPath(row: emails.count, section: 0)
-             emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
-             self.tableView.insertRows(at: [newIndexPath], with: .automatic)*/
-            
-        default:
-            //for trash
-            //editingStyle = .none
-            self.tableView.reloadData()
-        }
+       
       
         //call segue manually
         performSegue(withIdentifier: "cellSelected", sender: self)
@@ -145,6 +121,23 @@ class MenuTVC: UITableViewController {
         //2. up-to-date data
         
         print("In prepare")
+        switch selectedRow {
+        case "Inbox":
+            // adds edit button
+            
+            destVC.navigationItem.rightBarButtonItem = self.editButtonItem
+            
+        case "Sent" :
+            //add button
+            destVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+            
+        default:
+            //for trash
+            //editingStyle = .none
+            destVC.tableView.reloadData()
+        }
+   
+        
     }
   
 
