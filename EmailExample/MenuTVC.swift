@@ -121,16 +121,17 @@ class MenuTVC: UITableViewController {
         //2. up-to-date data
         
         print("In prepare")
+        
         switch selectedRow {
         case "Inbox":
             // adds edit button
             
-            destVC.navigationItem.rightBarButtonItem = self.editButtonItem
+            destVC.navigationItem.rightBarButtonItem = destVC.editButtonItem
             
         case "Sent" :
             //add button
-            destVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-            
+            destVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: destVC, action: nil)
+        
         default:
             //for trash
             //editingStyle = .none
