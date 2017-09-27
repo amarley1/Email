@@ -28,8 +28,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let test = Email(sender: "asu@asu.edu", subject: "Spam", contents: "Spam")
         menuTVC.dataDictionary = ["Inbox":[Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please")], "Sent":[Email(sender: "prof@asu.edu", subject: "Homework", contents: "Hi turn it in please"),Email(sender: "test", subject: "test2", contents: "test3")], "Trash":[Email(sender: "alert@asu.edu", subject: "Bees", contents: "Hi help me please there are bees")]]
 
+      //print(menuTVC.dataDictionary["Inbox"])
         
-     
+        /*
+         switch dataDictionary {
+         case "Inbox" :
+                // adds edit button
+                self.navigationItem.rightBarButtonItem = self.editButtonItem
+                //removes email after delete selected
+                emails.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.reloadData()
+         
+         case "Sent" :
+                //add button
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+                //adds spam email after being clicked
+                let newIndexPath = IndexPath(row: emails.count, section: 0)
+                emails.append(Email(sender: "spam@asu.edu", subject: "Spam", contents: "Spam"));
+                self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+         
+         default:
+                self.tableView.reloadData()
+         }
+*/
+ 
         
         /*
         rootTVC.emails.append(Email(sender: "fellow.student@asu.edu", subject: "Project Question", contents: "Hi help me please"))
